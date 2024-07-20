@@ -96,8 +96,8 @@ st.markdown("""
     unsafe_allow_html=True
 )
 
-st.title("""Talk to Sawy🐪
-اتكلم مع سوّي🐪""")
+st.title("Talk to Sawy🐪")
+st.title("اتكلم مع سوّي🐪")
 """
 Are you interested in knowing who Sawy is?
 What does her name mean?
