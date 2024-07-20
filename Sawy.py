@@ -97,11 +97,12 @@ st.markdown("""
 )
 
 st.title("Talk to Sawy🐪")
+st.title("اتكلم مع سوي🐪")
+
 """
-Are you interested in knowing who Sawy is?
-What does her name mean?
-Who made her and Why?
-All your questions will be answered by the AI personality Sawy!🐪
+مين سوي؟
+ايش يعني سوي؟
+أي سؤال يخطر في بالك عني اسأل سوّي الناقة الذكية وبتجاوبك!🐪
 """
 if "messages" not in st.session_state:
     st.session_state["messages"] = [
