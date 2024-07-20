@@ -22,7 +22,7 @@ def detect_topics(response_text):
         #"The Team": ["the team", "Sedra", "Jax", "Sulaiman", "Khuzama", "Roaa", "Asma", "Yousef"],
         #"The Projects": ["the projects", "sofa", "tables", "furniture", "sculpture", "the hand", "hand", "metal hand", "art piece", "SawySawa", "line-follower", "The Saqar"],
         #"The Stations": ["the stations", "sawysawy", "sawy-sawy", "سوي-سوي", "سوي سوي", "3D printing", "laser cutting", "arduino"],
-        "The Machines": ["machine","machines","equipment", "tools","laser cutter", "welding", "metal work", "3D printers", "vinyl", "vinyl cutter", "press heat", "3D pens"]
+        "The Machines": ["machine","machines","equipment", "tools","laser cutter", "welding", "metal work", "3D printers", "vinyl", "vinyl cutter", "press heat", "3D pens", "آلات", "قاطع"]
     }
     detected_topics = []
     for topic, keywords in topics.items():
