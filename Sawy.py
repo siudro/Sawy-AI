@@ -123,5 +123,3 @@ if prompt := st.chat_input():
     detected_topics = detect_topics(msg['content'])
     for topic in detected_topics:
         display_images(topic)
- 4 changes: 4 additions & 0 deletions4  
-requirements.txt
