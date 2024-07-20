@@ -4,6 +4,7 @@ from streamlit_extras.let_it_rain import rain
 from PIL import Image
 import os
 import base64
+from langdetect import detect
 
 openai_access_token = st.secrets["api_key"]
 
@@ -71,6 +72,16 @@ def get_base64_encoded_image(image_path):
     with open(image_path, "rb") as img_file:
         return base64.b64encode(img_file.read()).decode("utf-8")
 
+def get_text_direction(text):
+    try:
+        lang = detect(text)
+        if lang == "ar":
+            return "rtl"
+        else:
+            return "ltr"
+    except:
+        return "ltr"
+
 # Custom CSS
 st.markdown("""
     <style>
@@ -90,6 +101,12 @@ st.markdown("""
     }
     .image-container p {
         margin-top: 10px;
+    }
+    .ltr {
+        direction: ltr;
+    }
+    .rtl {
+        direction: rtl;
     }
     </style>
     """,
@@ -119,7 +136,9 @@ if prompt := st.chat_input():
     )
     msg = response.choices[0]['message']
     st.session_state.messages.append(msg)
-    st.chat_message("assistant").write(msg['content'])
+    
+    text_direction = get_text_direction(msg['content'])
+    st.chat_message("assistant").markdown(f'<div class="{text_direction}">{msg["content"]}</div>', unsafe_allow_html=True)
     
     detected_topics = detect_topics(msg['content'])
     for topic in detected_topics:
