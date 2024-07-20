@@ -4,7 +4,6 @@ from streamlit_extras.let_it_rain import rain
 from PIL import Image
 import os
 import base64
-from langdetect import detect
 
 openai_access_token = st.secrets["api_key"]
 
@@ -36,7 +35,7 @@ def detect_topics(response_text):
 def display_images(topic):
     images = []
     captions = []
-    
+
     if topic == "Numou":
         images = ["Numou/numou.jpeg", "Numou/visits.jpeg"]
         captions = ["Numou Education Center", "One of the school visits at S3"]
@@ -72,16 +71,6 @@ def get_base64_encoded_image(image_path):
     with open(image_path, "rb") as img_file:
         return base64.b64encode(img_file.read()).decode("utf-8")
 
-def get_text_direction(text):
-    try:
-        lang = detect(text)
-        if lang == "ar":
-            return "rtl"
-        else:
-            return "ltr"
-    except:
-        return "ltr"
-
 # Custom CSS
 st.markdown("""
     <style>
@@ -102,19 +91,12 @@ st.markdown("""
     .image-container p {
         margin-top: 10px;
     }
-    .ltr {
-        direction: ltr;
-    }
-    .rtl {
-        direction: rtl;
-    }
     </style>
     """,
     unsafe_allow_html=True
 )
 
 st.title("Talk to Sawy🐪")
-st.title("اتكلم مع سوّي🐪")
 """
 Are you interested in knowing who Sawy is?
 What does her name mean?
@@ -136,10 +118,10 @@ if prompt := st.chat_input():
     )
     msg = response.choices[0]['message']
     st.session_state.messages.append(msg)
-    
-    text_direction = get_text_direction(msg['content'])
-    st.chat_message("assistant").markdown(f'<div class="{text_direction}">{msg["content"]}</div>', unsafe_allow_html=True)
-    
+    st.chat_message("assistant").write(msg['content'])
+
     detected_topics = detect_topics(msg['content'])
     for topic in detected_topics:
         display_images(topic)
+ 4 changes: 4 additions & 0 deletions4  
+requirements.txt
