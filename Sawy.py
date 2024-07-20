@@ -97,7 +97,7 @@ st.markdown("""
 )
 
 st.title("""Talk to Sawy🐪
-اتكلم مع سوّي🐪")
+اتكلم مع سوّي🐪""")
 """
 Are you interested in knowing who Sawy is?
 What does her name mean?
